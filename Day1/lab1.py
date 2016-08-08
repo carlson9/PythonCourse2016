@@ -1,31 +1,68 @@
 def binarify(num): 
   """convert positive integer to base 2"""
-  if num<=0: return '0'
+  if num<=0: 
+	return '0'
   digits = []
-  return ''.join(digits)
-
+  while num > 0:
+	if num % 2 == 1 : 
+		digits.append('1')    
+	else:
+		digits.append('0')
+	num /= 2
+  return ''.join(digits[::-1])
+  
+  
+  
+  
 def int_to_base(num, base):
-  """convert positive integer to a string in any base"""
+  #"""convert positive integer to a string in any base"""
   if num<=0:  return '0' 
   digits = []
-  return ''.join(digits)
+  while num:
+        digits.append(str(num % base))
+        num /= base
+  return digits[::-1]
 
+  
+  
 def base_to_int(string, base):
-  """take a string-formatted number and its base and return the base-10 integer"""
+  #"""take a string-formatted number and its base and return the base-10 integer"""
   if string=="0" or base <= 0 : return 0 
-  result = 0 
-  return result 
+  mysum=0
+  for i in range(0,len(string)):
+	mysum+=base**i*int(string[len(string)-i-1])
+  return mysum
+  
+    
 
 def flexibase_add(str1, str2, base1, base2):
   """add two numbers of different bases and return the sum"""
+  int1 = base_to_int(str1, base1)
+  int2 = base_to_int(str2, base2)
+  tmp = int(int1)+int(int2)
   result = int_to_base(tmp, base1)
   return result 
 
+  def flexibase_add(str1, str2, base1, base2):
+  """add two numbers of different bases and return the sum"""
+  int1 = base_to_int(str1, base1)
+  int2 = base_to_int(str2, base2)
+  tmp = int1+int2
+  result = int_to_base(tmp, base1)
+  return result
+  
+  #flexibase_add ('1011','1101',2,2)
+  
 def flexibase_multiply(str1, str2, base1, base2):
   """multiply two numbers of different bases and return the product"""
+  int1 = base_to_int(str1, base1)
+  int2 = base_to_int(str2, base2)
+  tmp = int1*int2
   result = int_to_base(tmp, base1)
   return result 
 
+  
+  
 def romanify(num):
   """given an integer, return the Roman numeral version"""
   result = ""
