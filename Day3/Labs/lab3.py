@@ -44,7 +44,7 @@ class labTests(unittest.TestCase):
 	
 	#for piglatin()
   	def test_piglatin(self):
- 		self.assertEqual('yMay amenay isyay ikavay', piglatin('My name is'))
+ 		self.assertEqual('yMay amenay isyay', piglatin('My name is'))
  		self.assertNotEqual('My name is', piglatin('My name is'))
 		with self.assertRaises(NotTextException): piglatin(1)
  
