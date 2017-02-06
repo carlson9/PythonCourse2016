@@ -28,8 +28,24 @@ print sum([len(ring[node]) for node in ring.keys()])/2
 
 # Grid Network
 # TODO: create a square graph with 256 nodes and count the edges 
+square = {}
+#n = 256
+n=9
+
+def SquareGraph (n):
+	square={}
+	for i in range(1, n**2):
+		if i%n!= 0:
+			makeLink(square, i, i+1)
+		if (i-1)/n < n-1:
+			makeLink(square, i, i+n)
+	return square
+  
 # TODO: define a function countEdges
 
+def CountEdges(graph):
+	return reduce ((lambda x,y: x+y), map (len, graph.values()))/2
+print "There are %d edges in the square" % CountEdges (square)	
 
 # Social Network
 class Actor(object):
